@@ -1,5 +1,6 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components"
+
 const STEP = 10
 function DescreteInput({onChange}) {
     const [count, setCount] = useState(100);
@@ -10,7 +11,6 @@ function DescreteInput({onChange}) {
 
     const handleDecreaseCount = () => {
         setCount(count - STEP)
-       
     }
 
     useEffect(() => {

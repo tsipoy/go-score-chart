@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 // Import Highcharts
 import Highcharts from "highcharts/highstock";
@@ -6,19 +6,23 @@ import HighchartsReact from "highcharts-react-official";
 
 const Chart = ({xAxisCategories, seriesData, className}) => {
 
-  const [options] = useState({
+  const options = {
     title: {
       text: null
     },
     xAxis: {
       categories: xAxisCategories,
     },
+    yAxis: {
+      title: null
+    },
     plotOptions: {
       series: {
-
         allowPointSelect: false
       },
-
+    },
+    legend: {
+      enabled: false,
     },
     series: [{
       data: seriesData,
@@ -31,7 +35,7 @@ const Chart = ({xAxisCategories, seriesData, className}) => {
       }
     }, {
     }]
-  });
+  };
 
   return (
     <HighchartsReact

@@ -28,7 +28,7 @@ function UpToDate({monthlyContribution, totalSavings, interestRate}) {
                     <InformationStyle>
                         {`${totalSavings} kr`}
                     </InformationStyle><br />
-                    <SpanStyle> {`${numberofCoffeeCups} or  cup of coffee :)`}</SpanStyle>
+                    <SpanStyle> {`or ${numberofCoffeeCups} cup of coffee :)`}</SpanStyle>
                 </SavingEvryMonthStyle>
             </InnerContainer>
         </Container>

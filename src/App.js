@@ -1,7 +1,6 @@
 import './App.css';
 import styled from "styled-components"
 import SavingTip from './SavingTip';
-import Chart from './Chart';
 import YearSlider from './YearSlider';
 import UpToDate from './UpToDate';
 import GreenCheckMark from "./assets/vector.png"
@@ -20,11 +19,7 @@ const yearsAhead = [...Array(10).keys()].map((number) => number * 10 + 10)
 function App() {
 
   const [savingYearsSelected, setSavingYearsSelected] = useState(10);
-  const [startDeposite, setStartDeposite] = useState(initialSaving);
-  // const [interestRate, setInterestRate] = useState();
   const [monthlyContribution, setMonthlyContribution] = useState(100);
-  console.log('yearSelected::::::', savingYearsSelected);
-  console.log('monthlyContribution::::::', monthlyContribution);
 
   const savingsForYearsAhead = yearsAhead.reduce((acc, currVal) => {
 
@@ -36,19 +31,18 @@ function App() {
     for (let i = 1; i <= months; i++) {
       princ += add;
       princ += princ * (rate / 12);
-      // console.log(princ);
     }
-    console.log(princ.toFixed(2)); //69636.12
     acc[currVal] = princ
     return acc
   }, {})
 
-  const totalSavings = savingsForYearsAhead[savingYearsSelected];
+  const totalSavings = savingsForYearsAhead[savingYearsSelected].toFixed(2).toLocaleString('en-US');
 
-  console.log('savingsForYearsAhead::::::',savingsForYearsAhead);
+  const currentYear = new Date().getFullYear();
 
-  const xAxisCategories = [2021, 2031, 2041, 2051, 2061, 2071, 2081, 2091, 2101, 2111, 2121, 2131, 2151]
-  const seriesData = [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+  const xAxisCategories = yearsAhead.map((year) => year + currentYear - 10)
+
+  const seriesData = Object.values(savingsForYearsAhead)
   
   return (
     <Container>

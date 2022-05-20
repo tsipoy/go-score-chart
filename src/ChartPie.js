@@ -9,8 +9,6 @@ import Rectangle29 from "./assets/rectangle-29.png";
 import WhiteCircle from "./assets/white-circle.png";
 import RedArrow from "./assets/red-arrow.png";
 
-
-
 function ChartPie() {
     const options = {
         colors: ['rgba(236, 245, 254, 1)'],
@@ -38,7 +36,6 @@ function ChartPie() {
                 "padding": "50px",
                 "backgroundPositionX": "54%, 58%, 76%, 63%, 41%, 54%, 31%",
                 "backgroundPositionY": "40%, 28%, 39%, 55%, 55%, 40%, 23%",
-                // background-position: 54% 40%, 58% 28%, 76% 39%, 63% 55%, 41% 55%, 54% 40%, 31% 23%;
             },
             x: 0,
             y: 25,
@@ -56,7 +53,7 @@ function ChartPie() {
                         enabled: false
                     }
                 },
-                size: "50%",
+                size: "70%",
                 innerSize: "100%",
                 borderColor: null,
                 borderWidth: 8,

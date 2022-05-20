@@ -81,7 +81,7 @@ const YearSlider = ({onChange}) => {
             <Box sx={{ width: 500, height: 13 }}>
                 <PrettoSlider
                     aria-label="Restricted values"
-                    defaultValue={20}
+                    defaultValue={10}
                     valueLabelFormat={valueLabelFormat}
                     getAriaValueText={valuetext}
                     step={null}

@@ -12,27 +12,40 @@ import { useState } from 'react';
 import DescreteInput from './DescreteInput';
 
 const initialSaving = 17.10;
+const interestRate = 2
+const yearsAhead = [...Array(10).keys()].map((number) => number * 10 + 10)
+
+
 
 function App() {
 
   const [savingYearsSelected, setSavingYearsSelected] = useState(10);
   const [startDeposite, setStartDeposite] = useState(initialSaving);
-  const [interestRate, setInterestRate] = useState(2);
+  // const [interestRate, setInterestRate] = useState();
   const [monthlyContribution, setMonthlyContribution] = useState(100);
   console.log('yearSelected::::::', savingYearsSelected);
   console.log('monthlyContribution::::::', monthlyContribution);
 
-  // let princ = 3500; // start deposit
-  // let add = 250; // monthly deposit (need plus it every year)
-  // let rate = 12 / 100; // interest rate divided to create decimal
-  // let months = (10 * 12); //10 years of monthly contributions
+  const savingsForYearsAhead = yearsAhead.reduce((acc, currVal) => {
 
-  // for (let i = 1; i <= months; i++) {
-  //   princ += add;
-  //   princ += princ * (rate / 12);
-  //   console.log(princ);
-  // }
-  // console.log(princ.toFixed(2)); //69636.12
+    let princ = initialSaving; // start deposit
+    let add = monthlyContribution; // monthly deposit (need plus it every year)
+    let rate = interestRate / 100; // interest rate divided to create decimal
+    let months = (currVal * 12); //10 years of monthly contributions
+    
+    for (let i = 1; i <= months; i++) {
+      princ += add;
+      princ += princ * (rate / 12);
+      // console.log(princ);
+    }
+    console.log(princ.toFixed(2)); //69636.12
+    acc[currVal] = princ
+    return acc
+  }, {})
+
+  const totalSavings = savingsForYearsAhead[savingYearsSelected];
+
+  console.log('savingsForYearsAhead::::::',savingsForYearsAhead);
 
   const xAxisCategories = [2021, 2031, 2041, 2051, 2061, 2071, 2081, 2091, 2101, 2111, 2121, 2131, 2151]
   const seriesData = [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
@@ -62,7 +75,7 @@ function App() {
         </CommonContainer>
         <CommonContainer>
           <AddBank />
-          <UpToDate />
+          <UpToDate monthlyContribution={monthlyContribution} totalSavings={totalSavings} interestRate={interestRate}/>
         </CommonContainer>
       </ContentContainer>
     </Container>

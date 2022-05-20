@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon from './assets/f-icon.png';
 
+const coffeePrice = 35;
 
-function UpToDate() {
+function UpToDate({monthlyContribution, totalSavings, interestRate}) {
+    const numberofCoffeeCups = Math.round(totalSavings / coffeePrice)
     return (
         <Container>
             <InnerContainer>
@@ -16,17 +18,17 @@ function UpToDate() {
                         <InformationStyle>
                             TF Bank Norge NUF
                         </InformationStyle><br />
-                        <SpanStyle>(interest rate at 2.0%)</SpanStyle>
+                        <SpanStyle>{`(interest rate at ${interestRate} %)`}</SpanStyle>
                     </InterestContainer>
                 </UpToDateContainer>
             </InnerContainer>
             <InnerContainer>
-                <SmallTextStyle>Saving only <b>100.00 kr</b> every months makes a difference : </SmallTextStyle>
+                <SmallTextStyle>Saving only <b>{`${monthlyContribution} kr`}</b> every months makes a difference : </SmallTextStyle>
                 <SavingEvryMonthStyle>
                     <InformationStyle>
-                        13,271.97kr
+                        {`${totalSavings} kr`}
                     </InformationStyle><br />
-                    <SpanStyle>or 379 cup of coffee :)</SpanStyle>
+                    <SpanStyle> {`${numberofCoffeeCups} or  cup of coffee :)`}</SpanStyle>
                 </SavingEvryMonthStyle>
             </InnerContainer>
         </Container>

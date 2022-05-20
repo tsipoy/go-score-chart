@@ -24,9 +24,9 @@ function App() {
   const savingsForYearsAhead = yearsAhead.reduce((acc, currVal) => {
 
     let princ = initialSaving; // start deposit
-    let add = monthlyContribution; // monthly deposit (need plus it every year)
-    let rate = interestRate / 100; // interest rate divided to create decimal
-    let months = (currVal * 12); //10 years of monthly contributions
+    const add = monthlyContribution; // monthly deposit (need plus it every year)
+    const rate = interestRate / 100; // interest rate divided to create decimal
+    const months = (currVal * 12); //10 years of monthly contributions
     
     for (let i = 1; i <= months; i++) {
       princ += add;
@@ -53,7 +53,7 @@ function App() {
           <ConsiderStyleImage src={GreenCheckMark} />
           <ConsiderStyleText>Consider to work on sending more money to the savings account(-s).</ConsiderStyleText>
         </ConsiderStyle>
-        <CurrentSavingStyle>You current total savings are: <TotalAmountStyle>{`${initialSaving} kr`}</TotalAmountStyle></CurrentSavingStyle>
+        <CurrentSavingStyle>You current total savings are: <TotalAmountStyle>{`${initialSaving.toFixed(2).toLocaleString('en-US')} kr`}</TotalAmountStyle></CurrentSavingStyle>
       </HeaderContainer>
       <ContentContainer>
         <CommonContainer>
@@ -118,7 +118,7 @@ const ConsiderStyle = styled.div`
   border-radius: 6px;
   padding-block-start: 16px;
   padding-block-end: 16px;
-  padding-inline-end: 15px;
+  padding-inline-end: 21px;
   border: 0.3px solid rgba(16, 36, 99, 1);
 `
 

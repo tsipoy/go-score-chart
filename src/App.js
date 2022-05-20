@@ -11,13 +11,15 @@ import { HighChartWrapper } from "./Chart"
 import { useState } from 'react';
 import DescreteInput from './DescreteInput';
 
+const initialSaving = 17.10;
+
 function App() {
 
-  const [yearSelected, setYearSelected] = useState(10);
-  const [startDeposite, setStartDeposite] = useState(17.10);
+  const [savingYearsSelected, setSavingYearsSelected] = useState(10);
+  const [startDeposite, setStartDeposite] = useState(initialSaving);
   const [interestRate, setInterestRate] = useState(2);
   const [monthlyContribution, setMonthlyContribution] = useState(100);
-  console.log('yearSelected::::::', yearSelected);
+  console.log('yearSelected::::::', savingYearsSelected);
   console.log('monthlyContribution::::::', monthlyContribution);
 
   // let princ = 3500; // start deposit
@@ -32,6 +34,9 @@ function App() {
   // }
   // console.log(princ.toFixed(2)); //69636.12
 
+  const xAxisCategories = [2021, 2031, 2041, 2051, 2061, 2071, 2081, 2091, 2101, 2111, 2121, 2131, 2151]
+  const seriesData = [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+  
   return (
     <Container>
       <HeaderContainer>
@@ -41,18 +46,18 @@ function App() {
           <ConsiderStyleImage src={GreenCheckMark} />
           <ConsiderStyleText>Consider to work on sending more money to the savings account(-s).</ConsiderStyleText>
         </ConsiderStyle>
-        <CurrentSavingStyle>You current total savings are: <TotalAmountStyle>17.10 kr</TotalAmountStyle></CurrentSavingStyle>
+        <CurrentSavingStyle>You current total savings are: <TotalAmountStyle>{`${initialSaving} kr`}</TotalAmountStyle></CurrentSavingStyle>
       </HeaderContainer>
       <ContentContainer>
         <CommonContainer>
           <ChartPie />
-          <HighChartWrapper />
+          <HighChartWrapper xAxisCategories={xAxisCategories} seriesData={seriesData} />
         </CommonContainer>
         <CommonContainer>
           <SavingTip />
           <div>
             <DescreteInput onChange={setMonthlyContribution} />
-            <YearSlider onChange={setYearSelected} />
+            <YearSlider onChange={setSavingYearsSelected} />
           </div>
         </CommonContainer>
         <CommonContainer>

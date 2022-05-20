@@ -13,7 +13,7 @@ import RedArrow from "./assets/red-arrow.png";
 
 function ChartPie() {
     const options = {
-        colors: ['rgba(224, 85, 70, 1)'],
+        colors: ['rgba(236, 245, 254, 1)'],
         chart: {
             type: 'pie'
         },
@@ -27,7 +27,6 @@ function ChartPie() {
             style: {
                 "display": "inline-block",
                 "background": "inline-block",
-                // url(${WhiteCircle}), 
                 "backgroundImage": `url(${WhiteCircle}), url(${Ellipse11}), url(${Rectangle29}), url(${Rectangle23}), url(${Rectangle23}), url(${BlueCircle}), url(${RedArrow})`,
                 "backgroundRepeat": "no-repeat",
                 "backgroundSize": "auto",
@@ -37,14 +36,12 @@ function ChartPie() {
                 "lineHeight": "22px",
                 "height": "81px",
                 "padding": "50px",
-                "backgroundPosition": "52% 39%",
-                // background-position-y: 39%, 25%, 39%, 55%, 55%, 38%, 23%;
-
-                // background-position-x: 56%, 61%, 77%, 66%, 42%, 58%, 34%;
-                // background-position-y: 39%, 25%, 39%, 55%, 55%, 38%, 23%;
+                "backgroundPositionX": "54%, 58%, 76%, 63%, 41%, 54%, 31%",
+                "backgroundPositionY": "40%, 28%, 39%, 55%, 55%, 40%, 23%",
+                // background-position: 54% 40%, 58% 28%, 76% 39%, 63% 55%, 41% 55%, 54% 40%, 31% 23%;
             },
             x: 0,
-            y: 22,
+            y: 25,
             useHTML: true
         },
         plotOptions: {
@@ -59,7 +56,7 @@ function ChartPie() {
                         enabled: false
                     }
                 },
-                size: "70%",
+                size: "50%",
                 innerSize: "100%",
                 borderColor: null,
                 borderWidth: 8,
@@ -72,12 +69,12 @@ function ChartPie() {
         series: [{
             innerSize: '60%',
             data: [{
-                name: null,
-                y: 90,
-                color: 'rgba(236, 245, 254, 1)'
-            }, {
                 name: '17,10 kr / 90,238.54 kr',
                 y: 10,
+                color: 'rgba(224, 85, 70, 1)'
+            }, {
+                name: null,
+                y: 90,
             }]
         }],
     };
